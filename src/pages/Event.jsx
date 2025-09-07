@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 
 const eventData = {
-  1: { title: "Tech Conference", date: "12 Sept 2025", location: "Bangalore", description: "A full-day conference on emerging tech trends.", image: "/event1.jpg" },
-  2: { title: "Music Festival", date: "20 Sept 2025", location: "Delhi", description: "A weekend of music, fun, and food.", image: "/event2.jpg" },
+  1: { title: "Tech Conference", date: "12 Sept 2025", location: "Bangalore", description: "A full-day conference on emerging tech trends.", image: "https://picsum.photos/400/250?random=1" },
+  2: { title: "Music Festival", date: "20 Sept 2025", location: "Delhi", description: "A weekend of music, fun, and food.", image: "https://picsum.photos/400/250?random=2" },
 };
 
 export default function Event() {
