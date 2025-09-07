@@ -18,7 +18,7 @@ export default function Event() {
       <h2 className="event-date">{event.date}</h2>
       <div className="event-location">{event.location}</div>
       <div className="event-description">{event.description}</div>
-      <div className="register-btn">Register Now</div>
+      <button type="button" className="register-btn">Register Now</button>
     </div>
   );
 }
