@@ -10,7 +10,7 @@ export default function Event() {
   const event = eventData[id];
 
   return (
-    <div className="event">
+    <main className="event">
       <h1 className="event-title">{event.title}</h1>
       <div>
         <img src={event.image} alt={event.title} />
@@ -19,6 +19,6 @@ export default function Event() {
       <div className="event-location">{event.location}</div>
       <div className="event-description">{event.description}</div>
       <button type="button" className="register-btn">Register Now</button>
-    </div>
+    </main>
   );
 }
