@@ -18,7 +18,7 @@ export default function Event() {
       <h2 className="event-date">{event.date}</h2>
       <div className="event-location">{event.location}</div>
       <div className="event-description">{event.description}</div>
-      <button type="button" className="register-btn">Register Now</button>
+      <button type="button" className="register-btn" aria-label={`Register for ${event.title}`}>Register Now</button>
     </main>
   );
 }
