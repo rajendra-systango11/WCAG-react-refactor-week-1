@@ -10,6 +10,10 @@ export default function App() {
   return (
     <BrowserRouter>
       <div>
+        <a href="#main" className="skip-link">
+          Skip to main content
+        </a>
+
         <Header />
         <div className="content">
           <Routes>
