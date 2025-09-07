@@ -1,68 +1,192 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+/* src/index.css
+   ---- BAD STYLES (intentionally poor for training / to be refactored later) ----
+   - Low contrast
+   - No focus outlines
+   - Clickable DIVs styled like buttons but not keyboard accessible
+   - Fixed footer that can cover content
+   - Non-responsive layout (horizontal scrolling of cards)
+*/
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  box-sizing: border-box;
+  /* awful practice: removing outlines for everyone */
+  outline: none;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+html, body, #root {
+  height: 100%;
 }
 
 body {
   margin: 0;
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  color: #6f6f6f; /* low contrast text */
+  background: #ffffff;
+}
+
+/* Header */
+.header {
+  background: #f2f2f2;
+  padding: 16px 24px;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e2e2e2;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.logo {
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
 }
 
-button {
+.menu {
+  display: flex;
+  align-items: center;
+}
+
+.menu span {
+  margin-left: 16px;
+  cursor: pointer; /* looks clickable but is just span around link */
+  color: #777;
+}
+
+/* Links look plain and remove underline */
+.menu a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Main content wrapper */
+.content {
+  max-width: 980px;
+  margin: 24px auto;
+  padding: 0 18px;
+}
+
+/* Page titles are just divs with small font-size (bad) */
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #9a9a9a; /* very low contrast heading color */
+}
+
+/* Events list: horizontal cards with overflow (non-responsive) */
+.events {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto; /* forces horizontal scroll on small screens */
+  padding-bottom: 8px;
+}
+
+/* Event card (div soup) */
+.event-card {
+  min-width: 260px;
+  max-width: 260px;
+  border: 1px solid #ddd;
   border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  padding: 10px;
+  background: #fbfbfb;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* Image area */
+.event-image {
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #e9e9e9;
+}
+
+.event-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Text inside card */
+.event-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 8px;
+  color: #333;
+}
+
+.event-date,
+.event-location {
+  font-size: 12px;
+  color: #9b9b9b;
+  margin-top: 6px;
+}
+
+/* Read more - styled as a grey pill (looks like a button but is a link) */
+.read-more a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: #d6d6d6;
+  color: #6b6b6b;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Event detail page */
+.event {
+  max-width: 760px;
+  margin: 12px auto;
+  padding: 18px;
+  background: #fff;
+}
+
+.event-title {
+  font-size: 20px;
+  color: #444;
+}
+
+/* Register button is actually a div in the bad source (not accessible) */
+.register-btn {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 10px 16px;
+  border-radius: 6px;
+  background: #34a853; /* green */
+  color: #ffffff;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* About page */
+.about .text {
+  color: #7f7f7f;
+  line-height: 1.5;
+}
+
+/* Footer - fixed to bottom (can cover content) */
+.footer {
+  background: #f2f2f2;
+  color: #aaaaaa;
+  padding: 14px 20px;
+  text-align: center;
+  border-top: 1px solid #e2e2e2;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* Tiny screens: still rely on horizontal scroll (bad) */
+@media (max-width: 480px) {
+  .events { gap: 10px; }
+  .event-card { min-width: 220px; max-width: 220px; }
+  .content { padding: 0 12px; }
+}
+
+/* Misc - anchors have no focus style (bad) */
+a:focus, button:focus {
+  /* intentionally left empty to mimic removed focus outlines in bad example */
 }
