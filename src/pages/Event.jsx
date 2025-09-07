@@ -11,11 +11,11 @@ export default function Event() {
 
   return (
     <div className="event">
-      <div className="event-title">{event.title}</div>
+      <h1 className="event-title">{event.title}</h1>
       <div>
         <img src={event.image} />
       </div>
-      <div className="event-date">{event.date}</div>
+      <h2 className="event-date">{event.date}</h2>
       <div className="event-location">{event.location}</div>
       <div className="event-description">{event.description}</div>
       <div className="register-btn">Register Now</div>

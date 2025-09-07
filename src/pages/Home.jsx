@@ -8,7 +8,7 @@ const events = [
 export default function Home() {
   return (
     <div className="home">
-      <div className="title">Upcoming Events</div>
+      <h1 className="title">Upcoming Events</h1>
       <div className="events">
         {events.map((event) => <EventCard key={event.id} event={event} />)}
       </div>
