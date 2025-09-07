@@ -1,103 +1,78 @@
-/* src/index.css
-   ---- BAD STYLES (intentionally poor for training / to be refactored later) ----
-   - Low contrast
-   - No focus outlines
-   - Clickable DIVs styled like buttons but not keyboard accessible
-   - Fixed footer that can cover content
-   - Non-responsive layout (horizontal scrolling of cards)
-*/
-
-* {
-  box-sizing: border-box;
-  /* awful practice: removing outlines for everyone */
-  outline: none;
-}
-
-html, body, #root {
-  height: 100%;
-}
-
 body {
   margin: 0;
   font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 14px;
-  color: #6f6f6f; /* low contrast text */
-  background: #ffffff;
+  font-size: 16px;
+  color: #333333; /* good contrast */
+  line-height: 1.6;
+  background: #fafafa; /* softer background */
 }
 
 /* Header */
 .header {
-  background: #f2f2f2;
+  background: #ffffff;
   padding: 16px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #e2e2e2;
+  border-bottom: 1px solid #ddd;
 }
 
 .logo {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
-  color: #333;
+  color: #1b5e20;
 }
 
-.menu {
-  display: flex;
-  align-items: center;
-}
-
-.menu span {
-  margin-left: 16px;
-  cursor: pointer; /* looks clickable but is just span around link */
-  color: #777;
-}
-
-/* Links look plain and remove underline */
 .menu a {
-  color: inherit;
+  margin-left: 20px;
+  color: #333;
   text-decoration: none;
+  font-weight: 500;
 }
 
-/* Main content wrapper */
+.menu a:hover,
+.menu a:focus {
+  text-decoration: underline;
+}
+
+/* Content */
 .content {
-  max-width: 980px;
-  margin: 24px auto;
-  padding: 0 18px;
+  max-width: 1024px;
+  margin: 32px auto;
+  padding: 0 20px;
 }
 
-/* Page titles are just divs with small font-size (bad) */
+/* Page titles */
 .title {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 12px;
-  color: #9a9a9a; /* very low contrast heading color */
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #222222;
 }
 
-/* Events list: horizontal cards with overflow (non-responsive) */
+/* Events grid instead of horizontal scroll */
 .events {
-  display: flex;
-  gap: 16px;
-  overflow-x: auto; /* forces horizontal scroll on small screens */
-  padding-bottom: 8px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
 }
 
-/* Event card (div soup) */
+/* Event card */
 .event-card {
-  min-width: 260px;
-  max-width: 260px;
-  border: 1px solid #ddd;
+  border: 1px solid #e0e0e0;
   border-radius: 8px;
-  padding: 10px;
-  background: #fbfbfb;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  padding: 16px;
+  background: #ffffff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
 }
 
-/* Image area */
 .event-image {
   width: 100%;
-  height: 150px;
-  overflow: hidden;
+  height: 160px;
   border-radius: 6px;
+  overflow: hidden;
   background: #e9e9e9;
 }
 
@@ -105,88 +80,85 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
 }
 
-/* Text inside card */
 .event-title {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 600;
-  margin-top: 8px;
-  color: #333;
+  margin-top: 12px;
+  color: #111;
 }
 
 .event-date,
 .event-location {
-  font-size: 12px;
-  color: #9b9b9b;
+  font-size: 14px;
+  color: #555555;
   margin-top: 6px;
 }
 
-/* Read more - styled as a grey pill (looks like a button but is a link) */
 .read-more a {
   display: inline-block;
-  margin-top: 10px;
-  padding: 6px 10px;
+  margin-top: 12px;
+  padding: 8px 14px;
   border-radius: 6px;
-  background: #d6d6d6;
-  color: #6b6b6b;
+  background: #555555;
+  color: #ffffff;
   text-decoration: none;
-  cursor: pointer;
+  font-size: 14px;
+}
+
+.read-more a:hover,
+.read-more a:focus {
+  background: #333333;
 }
 
 /* Event detail page */
 .event {
   max-width: 760px;
-  margin: 12px auto;
-  padding: 18px;
+  margin: 24px auto;
+  padding: 24px;
   background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-.event-title {
-  font-size: 20px;
-  color: #444;
-}
-
-/* Register button is actually a div in the bad source (not accessible) */
 .register-btn {
   display: inline-block;
-  margin-top: 14px;
-  padding: 10px 16px;
+  margin-top: 16px;
+  padding: 12px 20px;
   border-radius: 6px;
-  background: #34a853; /* green */
+  background: #1b5e20;
   color: #ffffff;
-  cursor: pointer;
-  user-select: none;
-}
-
-/* About page */
-.about .text {
-  color: #7f7f7f;
-  line-height: 1.5;
-}
-
-/* Footer - fixed to bottom (can cover content) */
-.footer {
-  background: #f2f2f2;
-  color: #aaaaaa;
-  padding: 14px 20px;
+  font-size: 16px;
+  font-weight: 600;
   text-align: center;
-  border-top: 1px solid #e2e2e2;
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  cursor: pointer;
 }
 
-/* Tiny screens: still rely on horizontal scroll (bad) */
-@media (max-width: 480px) {
-  .events { gap: 10px; }
-  .event-card { min-width: 220px; max-width: 220px; }
-  .content { padding: 0 12px; }
+.register-btn:hover,
+.register-btn:focus {
+  background: #166c23;
 }
 
-/* Misc - anchors have no focus style (bad) */
-a:focus, button:focus {
-  /* intentionally left empty to mimic removed focus outlines in bad example */
+.footer {
+  background: #333333;
+  color: #f2f2f2;
+  padding: 18px 20px;
+  text-align: center;
+  border-top: 1px solid #222222;
+  margin-top: 40px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .title {
+    font-size: 22px;
+  }
+  .event-card {
+    padding: 12px;
+  }
+  .register-btn {
+    width: 100%;
+    text-align: center;
+  }
 }
