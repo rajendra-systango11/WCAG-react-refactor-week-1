@@ -13,7 +13,7 @@ export default function Event() {
     <div className="event">
       <h1 className="event-title">{event.title}</h1>
       <div>
-        <img src={event.image} />
+        <img src={event.image} alt={event.title} />
       </div>
       <h2 className="event-date">{event.date}</h2>
       <div className="event-location">{event.location}</div>
